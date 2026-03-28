@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { Separator } from '@/components/ui/separator'
 import { FOOTER_LINKS, SITE_CONFIG } from '@/lib/constants'
 
@@ -29,12 +31,12 @@ export function Footer() {
               <ul className="space-y-2">
                 {group.links.map((link) => (
                   <li key={link.href}>
-                    <a
+                    <Link
                       href={link.href}
                       className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

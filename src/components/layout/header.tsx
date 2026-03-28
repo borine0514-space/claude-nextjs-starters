@@ -1,4 +1,5 @@
 import { Menu } from 'lucide-react'
+import Link from 'next/link'
 
 import {
   NavigationMenu,
@@ -21,41 +22,27 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
         {/* 로고 */}
-        <div className="flex items-center gap-2 font-bold text-lg">
+        <Link href="/" className="flex items-center gap-2 font-bold text-lg">
           <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground">
             MS
           </div>
           <span className="hidden sm:inline">{SITE_CONFIG.name}</span>
-        </div>
+        </Link>
 
         {/* 데스크톱 네비게이션 */}
         <nav className="hidden md:flex items-center gap-6">
           <NavigationMenu>
             <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  href="/#features"
-                  className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
-                >
-                  기능
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  href="/#examples"
-                  className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
-                >
-                  예제
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  href="/docs"
-                  className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
-                >
-                  문서
-                </NavigationMenuLink>
-              </NavigationMenuItem>
+              {NAV_LINKS.map((link) => (
+                <NavigationMenuItem key={link.href}>
+                  <NavigationMenuLink
+                    href={link.href}
+                    className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
+                  >
+                    {link.label}
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
             </NavigationMenuList>
           </NavigationMenu>
         </nav>
@@ -78,13 +65,13 @@ export function Header() {
               </SheetHeader>
               <nav className="flex flex-col gap-4 mt-8">
                 {NAV_LINKS.map((link) => (
-                  <a
+                  <Link
                     key={link.href}
                     href={link.href}
                     className="text-sm font-medium hover:text-primary transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </nav>
             </SheetContent>

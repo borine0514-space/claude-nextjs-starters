@@ -1,13 +1,13 @@
 'use client'
 
 import { Menu } from 'lucide-react'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
 import {
   Sheet,
   SheetContent,
-  SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet'
@@ -30,13 +30,16 @@ export function Sidebar() {
 
       {/* 메뉴 아이템 */}
       {SIDEBAR_MENU.map((item) => {
-        const isActive = pathname === item.href || pathname.startsWith(item.href + '/')
+        const isActive =
+          pathname === item.href ||
+          (item.href !== '/dashboard' && pathname.startsWith(item.href + '/'))
         const Icon = item.icon
 
         return (
-          <a
+          <Link
             key={item.href}
             href={item.href}
+            aria-current={isActive ? 'page' : undefined}
             className={cn(
               'flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors',
               isActive
@@ -47,7 +50,7 @@ export function Sidebar() {
           >
             <Icon className="h-5 w-5 flex-shrink-0" />
             <span className="hidden md:inline">{item.label}</span>
-          </a>
+          </Link>
         )
       })}
     </nav>
@@ -67,9 +70,7 @@ export function Sidebar() {
           <span className="sr-only">사이드바</span>
         </SheetTrigger>
         <SheetContent side="left" className="w-64 p-0">
-          <SheetHeader className="px-4 pt-4">
-            <SheetTitle>{SITE_CONFIG.name}</SheetTitle>
-          </SheetHeader>
+          <SheetTitle className="sr-only">{SITE_CONFIG.name} 네비게이션</SheetTitle>
           {sidebarContent}
         </SheetContent>
       </Sheet>
