@@ -66,10 +66,10 @@ export default function LandingPage() {
                 title: '프로덕션 레디',
                 description: '최고의 관행을 따르는 구조로 언제든 배포할 수 있습니다.',
               },
-            ].map((feature, idx) => {
+            ].map((feature) => {
               const Icon = feature.icon
               return (
-                <Card key={idx}>
+                <Card key={feature.title}>
                   <CardHeader>
                     <div className="flex items-center gap-2 mb-2">
                       <div className="p-2 bg-primary/10 rounded-lg">
@@ -99,8 +99,8 @@ export default function LandingPage() {
               { number: '100%', label: 'TypeScript' },
               { number: '무료', label: 'MIT 라이선스' },
               { number: '24/7', label: ' 커뮤니티 지원' },
-            ].map((stat, idx) => (
-              <div key={idx}>
+            ].map((stat) => (
+              <div key={stat.label}>
                 <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">
                   {stat.number}
                 </div>
