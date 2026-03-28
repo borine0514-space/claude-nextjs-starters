@@ -20,7 +20,7 @@ export default function DocsPage() {
             <ArrowLeft className="w-4 h-4" />
             <span className="text-sm font-medium">돌아가기</span>
           </Link>
-          <h1 className="text-xl font-bold">문서</h1>
+          <p className="text-xl font-bold">문서</p>
           <div className="w-20" />
         </div>
       </header>
@@ -166,6 +166,28 @@ npm run dev`}</code>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">{page.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* API Reference */}
+        <section id="api-reference" className="mb-12">
+          <h2 className="text-2xl font-bold mb-6">API 레퍼런스</h2>
+          <div className="grid gap-4">
+            {[
+              { endpoint: 'GET /api/health', description: '서버 상태 확인' },
+              { endpoint: 'POST /api/auth/login', description: '로그인 및 토큰 발급' },
+              { endpoint: 'POST /api/auth/signup', description: '신규 계정 생성' },
+              { endpoint: 'POST /api/auth/logout', description: '로그아웃 및 토큰 만료' },
+            ].map((api) => (
+              <Card key={api.endpoint}>
+                <CardHeader>
+                  <CardTitle className="text-base font-mono">{api.endpoint}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">{api.description}</p>
                 </CardContent>
               </Card>
             ))}

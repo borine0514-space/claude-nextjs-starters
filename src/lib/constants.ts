@@ -35,7 +35,7 @@ export const FOOTER_LINKS: Array<{
     group: '개발자',
     links: [
       { label: '문서', href: '/docs' },
-      { label: 'API 레퍼런스', href: '/docs/api' },
+      { label: 'API 레퍼런스', href: '/docs#api-reference' },
       { label: 'GitHub', href: 'https://github.com' },
     ],
   },
