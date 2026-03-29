@@ -34,9 +34,13 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+
 # vercel
 .vercel
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# slack webhook url (민감 정보)
+.claude/slack-webhook-url
